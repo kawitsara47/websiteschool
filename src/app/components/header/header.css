@@ -1,0 +1,62 @@
+/* 1. ล้างค่า margin เริ่มต้นของหน้าเว็บ ไม่ให้เหลือขอบขาวรอบตัวเว็บ */
+body {
+  margin: 0;
+  padding: 0;
+}
+
+/* 2. ตั้งค่าให้ header ขยายเต็มหน้าจอ และใส่สีใหม่ */
+.school-header {
+  background-color: #D4B7E6; 
+  width: 100%;               
+  box-sizing: border-box;
+}
+
+/* 3. จัดระเบียบเนื้อหาด้านในให้อยู่กึ่งกลางหน้าจอ ไม่กระจายชิดขอบจอเกินไป */
+.school-header .container {
+  max-width: 1200px;         
+  margin: 0 auto;            
+  padding: 15px 20px;        
+  display: flex;
+  justify-content: space-between; /* โลโก้อยู่ซ้าย เมนูอยู่ขวา */
+  align-items: center;       /* จัดให้อยู่กึ่งกลางแนวตั้ง */
+}
+
+/* 4. จัดการโครงสร้างโลโก้ (รูปภาพ + ชื่อโรงเรียน) */
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 15px;                 /* ระยะห่างระหว่างรูปภาพกับชื่อโรงเรียน */
+}
+
+/* 5. บังคับขนาดรูปภาพที่ดึงมาจากลิ้งค์ ไม่ให้หดหาย */
+.logo img {
+  width: 60px;               /* กำหนดความกว้างของโลโก้ (ปรับเพิ่ม-ลดได้ตามต้องการ) */
+  height: auto;              /* ให้ความสูงปรับออโต้ รูปจะได้ไม่เบี้ยว */
+  display: block;
+  object-fit: contain;
+}
+
+/* 6. ตกแต่งตัวอักษรชื่อโรงเรียน */
+.school-name h1 {
+  margin: 0;
+  font-size: 1.3rem;
+  color: #333;
+}
+.school-name p {
+  margin: 0;
+  font-size: 0.85rem;
+  color: #555;
+}
+
+/* 7. สไตล์ของเมนู navbar */
+.navbar a {
+  text-decoration: none;
+  color: #333;               
+  margin-left: 20px;
+  font-weight: bold;
+  font-size: 0.95rem;
+}
+
+.navbar a:hover {
+  color: #6A4C93;            /* เปลี่ยนเป็นสีม่วงเข้มตอนเอาเมาส์ไปชี้ */
+}

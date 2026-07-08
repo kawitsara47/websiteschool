@@ -1,0 +1,189 @@
+/* ตั้งค่าพื้นฐาน */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* เปลี่ยนเป็นฟอนต์ที่คุณใช้ */
+}
+
+.app-container {
+  display: flex;
+  min-height: 100vh;
+}
+
+/* --- แถบด้านข้าง (Sidebar) --- */
+.sidebar {
+  width: 280px; /* ปรับความกว้างให้ได้สัดส่วนใกล้เคียงรูป */
+  background-color: #a387b9; /* สีม่วงเข้มหลักที่เป็นพื้นหลัง และเป็นสีช่องว่างคั่นกลาง */
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  min-height: 100vh;
+}
+
+/* ส่วนหัวที่ใส่โลโก้ */
+.sidebar .logo {
+  padding: 15px 20px 35px 20px; 
+  text-align: center;
+  background-color: #a387b9;
+}
+
+.sidebar .logo img {
+  max-width: 160px;
+  height: auto;
+}
+
+/* กล่องรวมเมนู */
+.sidebar-nav {
+  display: flex;
+  flex-direction: column;
+  /* ใช้ gap เพื่อสร้างช่องว่างสีเข้มคั่นกลางระหว่างปุ่ม */
+  gap: 30px; 
+  background-color: #a387b9; 
+}
+
+/* สไตล์ปุ่มเมนู */
+.sidebar-nav a {
+  display: block;
+  padding: 24px 20px;       /* ความสูงของปุ่มให้ดูเต็มตาตามรูป */
+  background-color: #cbb5df; /* สีม่วงอ่อนพาสเทลของตัวปุ่ม (เท่ากันทุกปุ่ม) */
+  color: #000000;           /* ตัวหนังสือสีดำสนิท */
+  text-decoration: none;
+  font-size: 22px;          /* ขนาดตัวอักษรใหญ่ชัดเจนตามรูป */
+  font-weight: 500;
+  text-align: center;
+  transition: background-color 0.2s ease;
+}
+
+/* เอฟเฟกต์ตอนเอาเมาส์ไปชี้ (Hover) */
+.sidebar-nav a:hover {
+  background-color: #bfa5d5; /* เข้มขึ้นเล็กน้อยเวลาชี้ให้น่ากด */
+}
+
+/* --- พื้นที่เนื้อหาและแถบบน --- */
+.main-content {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  background-color: #dbdbdb; /* สีเทาพื้นหลังของเนื้อหา */
+}
+
+/* แถบด้านบน (Top Navbar) */
+.top-navbar {
+  background-color: #e2d7ec; /* สีม่วงอ่อนพาสเทลด้านบน */
+  padding: 40px 10px;
+  border-bottom: 1px solid #d1c4e9;
+}
+
+.top-nav {
+  display: flex;
+  justify-content: flex-start;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.top-nav a {
+  color: #000;
+  text-decoration: none;
+  font-size: 15px;
+  padding: 5px 10px;
+  transition: color 0.2s;
+}
+
+.top-nav a:hover {
+  color: #512da8;
+  font-weight: bold;
+}
+
+/* พื้นที่ว่างสำหรับใส่เนื้อหา */
+.content-body {
+  flex-grow: 1;
+  padding: 20px;
+}
+
+/* จัดแถวเมนูหลักด้านบนให้นอนเรียงกันปกติ */
+.top-nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.top-nav > ul > li {
+  position: relative; /* ล็อกตำแหน่งไว้เพื่อให้กล่องย่อยเกาะอยู่ใต้ข้อความ */
+}
+
+.top-nav a {
+  display: block;
+  padding: 15px 20px;
+  color: #000;
+  text-decoration: none;
+  white-space: nowrap; 
+}
+
+/* --- จัดการกล่องย่อยขั้นที่ 1 (ซ่อนไว้ก่อน และจะดิ่งลงมาเมื่อชี้) --- */
+.top-nav .dropdown-menu {
+  display: none; 
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #ffffff; /* เปลี่ยนพื้นหลังกล่องย่อยเป็นสีขาวเพื่อให้เห็นตัวหนังสือชัดเจน */
+  min-width: 250px;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.15);
+  padding: 5px 0;
+  margin: 0;
+  list-style: none;
+  z-index: 999;
+}
+
+.top-nav .dropdown-menu li {
+  position: relative;
+  width: 100%;
+}
+
+.top-nav .dropdown-menu a {
+  color: #333333;
+  padding: 10px 20px;
+  text-align: left;
+}
+
+/* เอฟเฟกต์สั่งให้กล่องขั้นที่ 1 แสดงผลเมื่อนำเมาส์ไปชี้ */
+.top-nav .dropdown:hover > .dropdown-menu {
+  display: block;
+}
+
+/* --- จัดการกล่องย่อยขั้นที่ 2 (กางเยื้องออกด้านข้าง) --- */
+.top-nav .submenu-side {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 100%; /* ดันกล่องเมนูขั้นที่ 2 ให้กระเถิบออกไปทางขวาของกล่องแรก */
+  background-color: #ffffff;
+  min-width: 260px;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.15);
+  padding: 5px 0;
+  margin: 0;
+  list-style: none;
+  z-index: 1000;
+}
+
+/* เอฟเฟกต์สั่งให้กล่องขั้นที่ 2 แสดงผลเมื่อนำเมาส์ไปชี้ที่เมนูย่อย */
+.top-nav .dropdown-submenu:hover > .submenu-side {
+  display: block;
+}
+
+/* ไฮไลท์สีเมื่อเอาเมาส์ไปชี้ตามแถวต่างๆ */
+.top-nav .dropdown-menu li:hover > a {
+  background-color: #f1ebf7; 
+  color: #512da8;
+}
+
+/* จัดให้สัญลักษณ์ลูกศรชี้ไปทางขวาชิดมุม */
+.top-nav .arrow {
+  float: right;
+  font-size: 11px;
+  color: #888;
+  margin-top: 2px;
+}
